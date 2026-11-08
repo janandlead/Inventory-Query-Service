@@ -8,6 +8,10 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+/**
+ * Error body returned by the custom missing-product exception handler.
+ * Contains the HTTP status, reason, exception message, and request URI.
+ */
 @Setter
 @Getter
 @AllArgsConstructor
@@ -15,6 +19,7 @@ import lombok.Setter;
 @Builder
 public class ErrorResponse {
 	
+	/** Server-local time when the error response was created, without a UTC offset. */
 	private LocalDateTime timestamp;
 
 	private int status;

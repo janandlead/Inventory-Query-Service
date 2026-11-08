@@ -11,6 +11,11 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+/**
+ * Inventory record stored in the {@code products} table.
+ * Product name, code, and quantity are required. The availability flag is nullable
+ * in persistence, but must be populated for mapping to a product response.
+ */
 @Entity
 @Table(name="products")
 @Setter
@@ -34,6 +39,7 @@ public class Product {
 	@Column(nullable = false)
 	private Integer quantity;
 	
+	/** Stored availability flag, independent of the requested quantity. */
 	private Boolean avialable;
 	
 

@@ -11,9 +11,19 @@ import com.durga.Inventory_Query_Service.dto.ErrorResponse;
 
 import jakarta.servlet.http.HttpServletRequest;
 
+/**
+ * Translates missing-product exceptions into structured HTTP 404 responses.
+ */
 @RestControllerAdvice
 public class ProductGlobalExceptionHandler {
 
+	/**
+	 * Builds an error response containing the exception message and request URI.
+	 *
+	 * @param productNotFoundException failure raised by the product lookup
+	 * @param httpServletRequest request that triggered the failure
+	 * @return HTTP 404 with the error details and server-local timestamp
+	 */
 	@ExceptionHandler(ProductNotFoundException.class)
 	public ResponseEntity<ErrorResponse> handleProductNotFoundException(
 			ProductNotFoundException productNotFoundException, HttpServletRequest httpServletRequest) {
